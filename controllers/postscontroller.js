@@ -1,6 +1,9 @@
+const posts = require("../data/posts")
+
+
 //INDEX
 function index (req,res) {
-    res.json({message:"lista dei post",})
+    res.json({message:"lista dei post", posts, postsCount: posts.length})
 }
 
 //SHOW
