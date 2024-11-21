@@ -1,4 +1,5 @@
-const posts = require("../data/posts")
+const posts = require("../data/posts");
+const { post } = require("../routers/posts");
 
 
 //INDEX
@@ -25,10 +26,13 @@ function update (req,res){
 }
 //DESTROY
 function destroy (req,res){
-    const id = parseInt (req.params.id);
-    res.json(`eliminazione del post ${id}`)
+const id = parseInt (req.params.id);
+const eliminato =posts.find((post,index) =>post.id===id);
+console.log( "Elemento eliminato: ", eliminato);
+posts.splice(posts.indexOf(eliminato), 1);
+res.sendStatus(204);
+console.log("Lista aggiornata: ", posts);
 }
-
 
 module.exports = {index,show,store,update,destroy};
 
