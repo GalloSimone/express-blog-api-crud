@@ -15,8 +15,19 @@ function show (req,res) {
 }
 
 //STORE
-function store (req,res){
-    res.json("creazione nuovo post")
+    function store (req,res){
+    const {titolo, contenuto, img, tags}=req.body;
+    const id=posts.at(-1).id+1
+    const newPost={
+    id:id,
+    titolo:titolo,
+    contenuto:contenuto,
+    img:img,
+    tags:tags
+    }
+    posts.push(newPost)
+
+    res.json(newPost)
 }
 
 //UPDATE
