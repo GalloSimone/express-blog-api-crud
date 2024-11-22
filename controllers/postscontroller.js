@@ -33,7 +33,15 @@ function show (req,res) {
 //UPDATE
 function update (req,res){
     const id = parseInt (req.params.id);
-    res.json(`aggiornamento del post ${id}`)
+    const post =posts.find((post) =>post.id===id);
+    const {titolo, contenuto, img, tags}=req.body;
+   
+        
+        post.titolo=titolo;
+        post.contenuto=contenuto;
+        post.img=img;
+        post.tags=tags;
+        res.json(post)
 }
 //DESTROY
 function destroy (req,res){
