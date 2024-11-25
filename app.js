@@ -6,6 +6,8 @@ app.use(express.json());
 
 app.use(express.static('public'))
 
+const checkTime = require ("./Middlewares/checkTime")
+app.use(checkTime)
 const postsRouter = require("./routers/posts")
 
 
