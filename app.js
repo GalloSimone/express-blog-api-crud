@@ -6,12 +6,23 @@ app.use(express.json());
 
 app.use(express.static('public'))
 
+
+
+const postsRouter = require("./routers/posts")
+app.use("/posts",postsRouter)
+
+
+
 const checkTime = require ("./Middlewares/checkTime")
 app.use(checkTime)
-const postsRouter = require("./routers/posts")
+const errorHandler = require ("./Middlewares/errorHandler")
+app.use(errorHandler)
+const notFound = require ("./Middlewares/notFound")
+app.use(notFound)
 
 
-app.use("/posts",postsRouter)
+
+
 
 app.get('/', (req, res) => {
     res.send('Server del mio blog!')

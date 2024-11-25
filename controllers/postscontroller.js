@@ -9,6 +9,7 @@ function index (req,res) {
 
 //SHOW
 function show (req,res) {
+    Pippo.getData();
     const id = parseInt(req.params.id);
     const post =posts.find((post) =>post.id===id);
      res.json( post )
