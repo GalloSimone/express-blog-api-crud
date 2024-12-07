@@ -1,5 +1,5 @@
 const posts = require("../data/posts");
-const { post } = require("../routers/posts");
+
 
 
 //INDEX
@@ -9,7 +9,6 @@ function index (req,res) {
 
 //SHOW
 function show (req,res) {
-    Pippo.getData();
     const id = parseInt(req.params.id);
     const post =posts.find((post) =>post.id===id);
      res.json( post )
@@ -17,13 +16,14 @@ function show (req,res) {
 
 //STORE
     function store (req,res){
-    const {titolo, contenuto, img, tags}=req.body;
+    const {titolo, description, img, avaible,tags}=req.body;
     const id=posts.at(-1).id+1
     const newPost={
     id:id,
     titolo:titolo,
-    contenuto:contenuto,
+    description:description,
     img:img,
+    avaible:avaible,
     tags:tags
     }
     posts.push(newPost)
@@ -35,12 +35,13 @@ function show (req,res) {
 function update (req,res){
     const id = parseInt (req.params.id);
     const post =posts.find((post) =>post.id===id);
-    const {titolo, contenuto, img, tags}=req.body;
+    const {titolo, description, img,avaible, tags}=req.body;
    
         
         post.titolo=titolo;
-        post.contenuto=contenuto;
+        post.description=description;
         post.img=img;
+        post.avaible=avaible
         post.tags=tags;
         res.json(post)
 }
