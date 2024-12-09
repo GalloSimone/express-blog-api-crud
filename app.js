@@ -1,9 +1,8 @@
-
+require('dotenv').config();
 const express =require('express')
 const cors=require("cors");
 const app = express()
-//const port = 3000
-const port = process.env.HOST_PORT;
+const port = process.env.HOST_PORT||3000;
 const domain =process.env.HOST_DOMAIN;
 const frontendUrl = process.env.FRONTED_URL;
 
